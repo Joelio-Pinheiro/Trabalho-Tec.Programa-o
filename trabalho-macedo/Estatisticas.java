@@ -1,0 +1,3 @@
+public class Estatisticas<T extends Distribuicao> {
+    //Métodos para cálculo das distribuições...
+}
