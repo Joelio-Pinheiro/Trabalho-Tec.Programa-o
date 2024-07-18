@@ -16,7 +16,7 @@ public class Estatisticas<T extends Distribuicao> {
         Random rng = new Random();
         for (int i = 0; i < quantidade_valores; i++){
             double randomX = distribuicao.getLimiteInferior() + (distribuicao.getLimiteSuperior() - distribuicao.getLimiteInferior()) * rng.nextDouble();;
-            double densidade = distribuicao.calcularDensidade(randomX);
+            double densidade = distribuicao.calcularDistribuicao(randomX);
 
             resultado += densidade + ", ";
         }
@@ -32,7 +32,7 @@ public class Estatisticas<T extends Distribuicao> {
     }
 
     public void imprimirVariancia(){
-        double variancia = distribuicao.calcularVariancia();
+        double variancia = distribuicao.getVariancia();
 
         System.out.println("A variância calculada é: " + variancia);
     }
