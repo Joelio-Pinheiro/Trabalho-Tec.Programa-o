@@ -6,15 +6,15 @@ public abstract class Distribuicao {
     protected double media;
     protected double desvio;
 
-    public double getMedia(){return this.media;}
-    public double getDesvio() {return this.desvio;}
-    public double getVariancia() {return Math.pow(this.desvio, 2);}
+    double getMedia(){return this.media;}
+    double getDesvio() {return this.desvio;}
+    double getVariancia() {return Math.pow(this.desvio, 2);}
 
-    public double getLimiteInferior() {return this.limiteInferior;}
-    public double getLimiteSuperior() {return this.limiteSuperior;}
+    double getLimiteInferior() {return this.limiteInferior;}
+    double getLimiteSuperior() {return this.limiteSuperior;}
 
     //... Métodos abstratos comuns às distribuições
-    public abstract double calcularDensidade(double x);
-    public abstract double calcularMedia();
-    public abstract double calcularVariancia();
+    public abstract double calcularDistribuicao(double x);
+    protected abstract double calcularMedia();
+    protected abstract double calcularDesvio();
 }
