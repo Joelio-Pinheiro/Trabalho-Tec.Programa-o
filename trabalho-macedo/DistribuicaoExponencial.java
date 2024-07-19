@@ -1,41 +1,28 @@
-import java.util.Random;
 public class DistribuicaoExponencial extends Distribuicao{
-    int[] array = new int[5];
-    int lambda;
+    double lambda;
 
-    DistribuicaoExponencial(int x){
-        this.lambda = x;
+    public DistribuicaoExponencial(double lambda){
+        this.lambda = lambda;
     }
 
-    double calcVariancia(){
-        double variancia = 1.0/(this.lambda * this.lambda);
+    public double calcularDistribuicao(double x){
+        //fórmula da distribuição exponencial: lambda * e^(-lambda * x)
+        double exp = this.lambda * x;
 
-        return variancia;
+        double result = this.lambda * Math.pow(1/Math.E, exp); 
+        
+        return result;
     }
 
-    void imprimirValores(){
-        Random random = new Random();
-        double exp = Math.E;
-
-        for(int i = 0; i < 5; i++){
-            this.array[i] = random.nextInt();
-        }
-        System.out.print("Os valores gerados são: ");
-        for(int i = 0; i < 5; i++){
-            double pot = this.lambda * this.array[i];
-            double val = this.lambda * Math.pow((1/exp), pot);
-            
-            if(i == 4){
-                System.out.print(val);
-            }
-            else{
-                System.out.print(val+",");
-            }
-        }
+    protected double calcularMedia(){
+        
+        
     }
-    void imprimirVariancia(){
-        double varianciaEsp = calcVariancia();
 
-        System.out.println("O valor da variância é: "+varianciaEsp);
+    protected  double calcularDesvio(){
+        double num = Math.pow(this.lambda, 2);
+
+        return Math.sqrt(1/num);
     }
+
 }
