@@ -1,12 +1,9 @@
 import java.util.Random;
-public class Teste{
-    
-    Random random = new Random();
-
-    float[] array = new float[5];
+public class DistribuicaoExponencial extends Distribuicao{
+    int[] array = new int[5];
     int lambda;
-    
-    Teste(int x){
+
+    DistribuicaoExponencial(int x){
         this.lambda = x;
     }
 
@@ -17,34 +14,28 @@ public class Teste{
     }
 
     void imprimirValores(){
+        Random random = new Random();
         double exp = Math.E;
 
-        System.out.println("Os valores do vetor são: ");
-
         for(int i = 0; i < 5; i++){
-            this.array[i] = random.nextFloat();
-
-            System.out.print(array[i]+",");
+            this.array[i] = random.nextInt();
         }
-
-        System.out.println("\nOs valores gerados são: ");
-
+        System.out.print("Os valores gerados são: ");
         for(int i = 0; i < 5; i++){
             double pot = this.lambda * this.array[i];
             double val = this.lambda * Math.pow((1/exp), pot);
+            
             if(i == 4){
                 System.out.print(val);
             }
             else{
                 System.out.print(val+",");
             }
-            
         }
     }
-
     void imprimirVariancia(){
         double varianciaEsp = calcVariancia();
 
-        System.out.println("\nO valor da variância é: "+varianciaEsp);
+        System.out.println("O valor da variância é: "+varianciaEsp);
     }
 }
