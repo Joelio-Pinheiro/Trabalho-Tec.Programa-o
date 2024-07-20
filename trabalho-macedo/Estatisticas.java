@@ -26,7 +26,7 @@ public class Estatisticas<T extends Distribuicao> {
     }
 
     public void imprimirMedia(){
-        double media = distribuicao.calcularMedia();
+        double media = distribuicao.getMedia();
 
         System.out.println("A média calculada é: " + media);
     }
