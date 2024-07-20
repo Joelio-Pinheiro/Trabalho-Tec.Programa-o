@@ -6,23 +6,27 @@ public class DistribuicaoExponencial extends Distribuicao{
     }
 
     public double calcularDistribuicao(double x){
+        double result = 0;
         //fórmula da distribuição exponencial: lambda * e^(-lambda * x)
-        double exp = this.lambda * x;
+        if(x == 0){
+            result = 0;
+        }
+        else{
+            double exp = this.lambda * x;
+            result = this.lambda * Math.pow(1/Math.E, exp); 
+        }
 
-        double result = this.lambda * Math.pow(1/Math.E, exp); 
-        
         return result;
     }
 
     protected double calcularMedia(){
         
-        
+        return 1/this.lambda;
     }
 
     protected  double calcularDesvio(){
-        double num = Math.pow(this.lambda, 2);
+        //a variância é igual a 1/lambda², o que significa que o desvio é 1/lambda
 
-        return Math.sqrt(1/num);
+        return 1/this.lambda;
     }
-
 }
