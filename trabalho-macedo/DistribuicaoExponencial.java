@@ -3,6 +3,9 @@ public class DistribuicaoExponencial extends Distribuicao{
 
     public DistribuicaoExponencial(double lambda){
         this.lambda = lambda;
+
+        this.media = calcularMedia();
+        this.desvio = calcularDesvio();
     }
 
     public double calcularDistribuicao(double x){
