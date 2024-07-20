@@ -2,6 +2,9 @@ public class DistribuicaoExponencial extends Distribuicao{
     double lambda;
 
     public DistribuicaoExponencial(double lambda){
+        this.limiteInferior = 0;
+        this.limiteSuperior = 5;
+
         this.lambda = lambda;
 
         this.media = calcularMedia();
@@ -13,6 +16,7 @@ public class DistribuicaoExponencial extends Distribuicao{
         //fórmula da distribuição exponencial: lambda * e^(-lambda * x)
         if(x == 0){
             result = 0;
+            //a probabilidade de que X seja 0 é também nula
         }
         else{
             double exp = this.lambda * x;
