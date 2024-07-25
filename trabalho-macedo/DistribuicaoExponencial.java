@@ -1,42 +1,42 @@
-import java.util.Random;
 public class DistribuicaoExponencial extends Distribuicao{
+    double lambda;
     
-    Random random = new Random();
+    public DistribuicaoExponencial(double media){
+        this.limiteInferior = 0;
+        this.limiteSuperior = 5;
 
-    int[] array = new int[5];
-    int lambda;
+        this.lambda = 1/media;
+        this.media = media;
 
-    DistribuicaoExponencial(int x){
-        lambda = x;
+        this.desvio = calcularDesvio();
     }
 
-    double calcVariancia(){
-        double variancia = 1.0/(lambda * lambda);
-
-        return variancia;
-    }
-
-    void imprimirValores(){
-        double exp = Math.E;
-        System.out.println("Os valores do vetor são: ");
-        for(int i = 0; i < 5; i++){
-            array[i] = random.nextInt();
-
-            System.out.print(array[i]+",");
+    public double calcularDistribuicao(double x){
+        double result = 0;
+        
+        //fórmula da distribuição exponencial: lambda * e^(-lambda * x)
+        if(x == 0){
+            result = 0;
+            //a probabilidade de que X seja 0 deve ser nula
         }
-        System.out.println("Os valores gerados são: ");
-        for(int i = 0; i < 5; i++){
-            double pot = lambda * array[i];
-            double val = lambda * Math.pow((1/exp), pot);
-
-            System.out.print(val+" ");
+        else{
+            //resolvendo o expoente (lambda * x) separadamente
+            double expoente = this.lambda * x;
+            
+            //como o expoente é negativo, inverti o euler, por isso 1/Math.E
+            result = this.lambda * Math.pow(1/Math.E, expoente); 
         }
-    }
-    void imprimirVariancia(){
-        double varianciaEsp = calcVariancia();
-
-        System.out.println("O valor da variância é: "+varianciaEsp);
+        
+        return result;
     }
 
+    protected double calcularMedia(){
+        //a média foi dada como parâmetro
+        return this.media;
+    }
 
+    protected  double calcularDesvio(){
+        //a variância é igual a 1/lambda², o que significa que o desvio é 1/lambda
+        return 1/this.lambda;
+    }
 }
