@@ -12,15 +12,15 @@ public class Estatisticas<T extends Distribuicao> {
             throw new Exception("Quantidade de valores deve ser um número positivo!");
         }
 
-        String resultado = "{ ";
+        StringBuilder resultado = new StringBuilder("");
         Random rng = new Random();
         for (int i = 0; i < quantidade_valores; i++){
             double randomX = distribuicao.getLimiteInferior() + (distribuicao.getLimiteSuperior() - distribuicao.getLimiteInferior()) * rng.nextDouble();;
             double densidade = distribuicao.calcularDistribuicao(randomX);
 
-            resultado += densidade + ", ";
+            if (i < quantidade_valores - 1) resultado.append(densidade + ",");
+            else resultado.append(densidade);
         }
-        resultado += "}";
 
         System.out.println("Os valores gerados são: " + resultado);
     }
