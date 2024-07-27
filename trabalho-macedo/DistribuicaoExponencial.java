@@ -2,8 +2,9 @@ public class DistribuicaoExponencial extends Distribuicao{
     double lambda;
 
     public DistribuicaoExponencial(double lambda){
+        //O limite dessa distribuição é calculado baseado numa probabilidade de ocorrência de 99.99% no intervalo [limiteInferior, limiteSuperior]
         this.limiteInferior = 0;
-        this.limiteSuperior = 5;
+        this.limiteSuperior = 9.21034f/lambda; //9.21034 é a aproximação de ln(1/10000) em valores absolutos
 
         this.lambda = lambda;
 
@@ -12,16 +13,13 @@ public class DistribuicaoExponencial extends Distribuicao{
     }
 
     public double calcularDistribuicao(double x){
+        if (x < 0) return 0;
+
         double result = 0;
         //fórmula da distribuição exponencial: lambda * e^(-lambda * x)
-        if(x == 0){
-            result = 0;
-            //a probabilidade de que X seja 0 é também nula
-        }
-        else{
-            double exp = this.lambda * x;
-            result = this.lambda * Math.pow(1/Math.E, exp); 
-        }
+
+        double exp = this.lambda * x;
+        result = this.lambda * Math.pow(1/Math.E, exp); 
 
         return result;
     }
