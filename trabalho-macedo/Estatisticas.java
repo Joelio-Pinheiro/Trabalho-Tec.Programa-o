@@ -7,17 +7,13 @@ public class Estatisticas<T extends Distribuicao> {
         this.distribuicao = distribuicao;
     }
 
-    public void imprimirValoresGerados(int quantidade_valores) throws Exception{
-        if (quantidade_valores < 0){
-            throw new Exception("Quantidade de valores deve ser um número positivo!");
-        }
-
+    public void imprimirValoresGerados(int quantidade_valores){
         StringBuilder resultado = new StringBuilder("");
         Random rng = new Random();
         for (int i = 0; i < quantidade_valores; i++){
             double randomX = distribuicao.getLimiteInferior() + (distribuicao.getLimiteSuperior() - distribuicao.getLimiteInferior()) * rng.nextDouble();;
             double densidade = distribuicao.calcularDistribuicao(randomX);
-
+   
             if (i < quantidade_valores - 1) resultado.append(densidade + ",");
             else resultado.append(densidade);
         }
