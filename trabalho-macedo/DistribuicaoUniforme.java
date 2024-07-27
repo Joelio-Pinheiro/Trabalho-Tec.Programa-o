@@ -11,6 +11,8 @@ public class DistribuicaoUniforme extends Distribuicao {
     }
 
     public double calcularDistribuicao(double x){
+        if (x < limiteInferior || x > limiteSuperior) return 0;
+
         double comprimento = this.limiteSuperior - this.limiteInferior;
 
         return 1/comprimento;
