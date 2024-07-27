@@ -1,8 +1,5 @@
 public class DistribuicaoNormal extends Distribuicao {
     public DistribuicaoNormal(double media, double desvio){
-        this.limiteInferior = this.media - this.desvio*Math.PI;
-        this.limiteSuperior = this.media + this.desvio*Math.PI;
-
         this.media = media;
         this.desvio = desvio;
 
