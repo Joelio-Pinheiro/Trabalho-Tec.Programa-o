@@ -15,11 +15,14 @@ public class DistribuicaoPoisson extends Distribuicao {
     }
 
     public double calcularDistribuicao(double x){
-        double numerador = Math.pow(Math.E, -lambda) * Math.pow(lambda, x);
+        //É uma distribuição discreta, então, por convenção, arrendondamos o x pra baixo
+        int discX = (int) x;
+
+        double numerador = Math.pow(Math.E, -lambda) * Math.pow(lambda, discX);
         double denominador = 1;
 
         //Calculando o denominador (fatorial de x)
-        for (int i = (int) x; i > 0; i--){ denominador *= i; }
+        for (int i = discX; i > 0; i--){ denominador *= i; }
         
         return numerador/denominador;
     }
