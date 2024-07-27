@@ -1,5 +1,6 @@
 public class Main {
-    public static void main(String[] args) throws Exception {
+
+    public static void main(String[] args) {
 
         DistribuicaoNormal distribuicaoNormal = new DistribuicaoNormal(0, 1);
         DistribuicaoUniforme distribuicaoUniforme = new DistribuicaoUniforme(0, 1);
@@ -32,4 +33,3 @@ public class Main {
         estatisticasPoisson.imprimirVariancia();
     }
 }
-
